@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using LanchesMac.Repositories;
+using LanchesMac.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace LanchesMac.Context;
 
@@ -12,6 +14,9 @@ public static class Infrastructure
         //services.AddDbContext<AppDbContext>(options => 
         //    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
         //    b => b.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)));
+
+        services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+        services.AddTransient<ILancheRepository, LancheRepository>();
 
         //Configuração dos cookies da aplicação 
         services.ConfigureApplicationCookie(options =>
