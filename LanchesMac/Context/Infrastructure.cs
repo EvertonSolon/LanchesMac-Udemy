@@ -1,6 +1,8 @@
-﻿using LanchesMac.Repositories;
+﻿using LanchesMac.Models;
+using LanchesMac.Repositories;
 using LanchesMac.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace LanchesMac.Context;
 
@@ -17,6 +19,10 @@ public static class Infrastructure
 
         services.AddTransient<ICategoriaRepository, CategoriaRepository>();
         services.AddTransient<ILancheRepository, LancheRepository>();
+        services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
+
+        //HttpContext
+        services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
         //Configuração dos cookies da aplicação 
         services.ConfigureApplicationCookie(options =>
