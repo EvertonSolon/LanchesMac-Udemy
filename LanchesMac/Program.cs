@@ -28,29 +28,10 @@ app.UseSession();
 
 app.UseAuthorization();
 
-//app.MapControllerRoute(
-//    name: "teste",
-//    pattern: "testeme",
-//    defaults: new { controller = "teste", Action = "Index"});
-
-//app.MapControllerRoute(
-//    name: "admin",
-//    pattern: "admin/{action=Index}/{id?}",
-//    defaults: new { controller = "Admin" });
-
-//A ordenação das rotas é muito importante!
-//Nos exemplos abaixo, se digitar admin na url, a primeira condição irá atender e não irá para admin.
-//Já se inverter a ordem das rotas nesta configuração e colocar a admin antes da home, ao digitar admin
-//irá para o controller Admin.
 app.MapControllerRoute(
-    name: "home",
-    pattern: "{home}",
-    defaults: new { controller = "Home", Action = "Index" });
-
-app.MapControllerRoute(
-    name: "admin",
-    pattern: "admin",
-    defaults: new { controller = "Admin", Action = "Index" });
+    name: "categoriaFiltro",
+    pattern: "Lanche/{action}/{categoria?}",
+    defaults: new { controller = "Lanche", Action = "List" });
 
 app.MapControllerRoute(
     name: "default",
