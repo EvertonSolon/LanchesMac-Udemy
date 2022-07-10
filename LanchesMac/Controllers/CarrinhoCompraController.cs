@@ -32,7 +32,7 @@ public class CarrinhoCompraController : Controller
         return View(carrinhoCompraVM);
     }
 
-    public void AdicionaritemNoCarrinhoCompra(int lancheId)
+    public IActionResult AdicionaritemNoCarrinhoCompra(int lancheId)
     {
         ExecutarComando(AdicionarItem, lancheId);
 
@@ -45,10 +45,10 @@ public class CarrinhoCompraController : Controller
         //    _carrinhoCompra.AdicionarAoCarrinho(lancheSelecionado);
         //}
 
-        //return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(Index));
     }
 
-    public void RemoverItemDoCarrinhoCompra(int lancheId)
+    public IActionResult RemoverItemDoCarrinhoCompra(int lancheId)
     {
         ExecutarComando(RemoverItem, lancheId);
 
@@ -61,10 +61,10 @@ public class CarrinhoCompraController : Controller
         //    _carrinhoCompra.RemoverDoCarrinho(lancheSelecionado);
         //}
 
-        //return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(Index));
     }
 
-    private IActionResult ExecutarComando(Action<Lanche> PersistirBD, int lancheId)
+    private void ExecutarComando(Action<Lanche> PersistirBD, int lancheId)
     {
         var lancheSelecionado = _lancheRepository.Lanches
                         .FirstOrDefault(p => p.LancheId == lancheId);
@@ -74,7 +74,7 @@ public class CarrinhoCompraController : Controller
             PersistirBD(lancheSelecionado);
         }
 
-        return RedirectToAction(nameof(Index));
+        //return RedirectToAction(nameof(Index));
     }
 
     public void RemoverItem(Lanche lancheSelecionado)

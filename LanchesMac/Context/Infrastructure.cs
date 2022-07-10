@@ -20,6 +20,7 @@ public static class Infrastructure
         services.AddTransient<ICategoriaRepository, CategoriaRepository>();
         services.AddTransient<ILancheRepository, LancheRepository>();
         services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
+        services.AddTransient<IPedidoRepository, PedidoRepository>();
 
         //HttpContext
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
