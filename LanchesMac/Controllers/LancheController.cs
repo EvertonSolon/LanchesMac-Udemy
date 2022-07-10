@@ -16,16 +16,20 @@ namespace LanchesMac.Controllers
         public IActionResult List(string categoria)
         {
             IEnumerable<Lanche> lanches = null;
-            string categoriaAtual = string.Empty;
+            string categoriaAtual = categoria ?? string.Empty;
 
-            lanches = _lancheRepository.Lanches
-                .Where(lanche => lanche.Categoria.CategoriaNome == categoria)
-                .OrderBy(x => x.Nome);
+            lanches = _lancheRepository.Lanches;
 
             if (string.IsNullOrEmpty(categoria))
             {
                 lanches = lanches.OrderBy(x => x.LancheId);
                 categoriaAtual = "Todos os lanches";
+            }
+            else
+            {
+                lanches = lanches
+                    .Where(lanche => lanche.Categoria.CategoriaNome == categoria)
+                    .OrderBy(x => x.Nome);
             }
 
             var lancheListVm = new LancheListViewModel
