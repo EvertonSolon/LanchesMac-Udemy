@@ -2,12 +2,12 @@
 
 <partial name="_Carousel"/>
 
-<h2>Os preferidos da semana</h2>
+<h2 style="margin-top: 20px">Os preferidos da semana</h2>
 <h4>Tá com fome?</h4>
 
 <div class="row">
     @foreach(var lanche in Model.LanchesPreferidos)
     {
-        <partial name="_LancheResumo" for="@lanche" />
+        <partial name="_LanchesResumo" for="@lanche" />
     }
 </div>

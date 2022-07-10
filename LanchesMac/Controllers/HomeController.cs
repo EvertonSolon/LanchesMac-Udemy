@@ -17,8 +17,6 @@ namespace LanchesMac.Controllers
 
         public IActionResult Index()
         {
-            //TempData["Nome"] = "Treinamento MVC";
-
             var homeViewModel = new HomeViewModel
             {
                 LanchesPreferidos = _lancheRepository.LanchesPreferidos

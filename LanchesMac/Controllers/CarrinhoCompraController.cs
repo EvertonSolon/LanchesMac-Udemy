@@ -19,7 +19,7 @@ public class CarrinhoCompraController : Controller
 
     public IActionResult Index()
     {
-        var itens = _carrinhoCompra.GetCarrinhoCompraItems();
+        var itens = _carrinhoCompra.GetCarrinhoCompraItens();
 
         _carrinhoCompra.CarrinhoCompraItems = itens;
 
