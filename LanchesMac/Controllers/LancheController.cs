@@ -18,25 +18,11 @@ namespace LanchesMac.Controllers
             IEnumerable<Lanche> lanches = null;
             string categoriaAtual = string.Empty;
 
-            lanches = _lancheRepository.Lanches.OrderBy(x => x.LancheId);
+            lanches = _lancheRepository.Lanches
+                .Where(lanche => lanche.Categoria.CategoriaNome == categoria)
+                .OrderBy(x => x.Nome);
 
-            if (string.Equals("Normal", categoria, StringComparison.OrdinalIgnoreCase))
-            {
-                lanches = lanches
-                    .Where(lanche => lanche.Categoria.CategoriaNome
-                    .Equals("Normal"))
-                    .OrderBy(l => l.Nome);
-                categoriaAtual = categoria;
-            }
-            else if(string.Equals("Natural", categoria, StringComparison.OrdinalIgnoreCase))
-            {
-                lanches = lanches
-                   .Where(lanche => lanche.Categoria.CategoriaNome
-                   .Equals("Natural"))
-                   .OrderBy(l => l.Nome);
-                categoriaAtual = categoria;
-            }
-            else
+            if (string.IsNullOrEmpty(categoria))
             {
                 lanches = lanches.OrderBy(x => x.LancheId);
                 categoriaAtual = "Todos os lanches";
