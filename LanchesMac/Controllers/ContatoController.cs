@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace LanchesMac.Controllers
 {
     [Authorize]
+    //[Authorize(Roles ="Admin")] <- outra forma de implementar a autorização com definição de roles.
     public class ContatoController : Controller
     {
         public IActionResult Index()
