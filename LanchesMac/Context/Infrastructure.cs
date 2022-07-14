@@ -18,6 +18,17 @@ public static class Infrastructure
             .AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
 
+        //Padrão do ASP.NET Core Identity 
+        //services.Configure<IdentityOptions>(options =>
+        //{
+        //    options.Password.RequireDigit = true;
+        //    options.Password.RequireLowercase = true;
+        //    options.Password.RequireNonAlphanumeric = true;
+        //    options.Password.RequireUppercase = true;
+        //    options.Password.RequiredLength = 8;
+        //    options.Password.RequiredUniqueChars = 1;
+        //});
+
         services.AddTransient<ICategoriaRepository, CategoriaRepository>();
         services.AddTransient<ILancheRepository, LancheRepository>();
         services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
