@@ -51,7 +51,7 @@ public static class Infrastructure
 
         //Configuração dos cookies da aplicação 
         services.ConfigureApplicationCookie(options =>
-        options.AccessDeniedPath = "/Account/Login"); //Controller Account, Action Login
+        options.AccessDeniedPath = "/Account/AccessDenied"); //Controller Account, Action AccessDenied
 
         return services;
     }
