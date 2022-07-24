@@ -40,6 +40,15 @@ public static class Infrastructure
 
         services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
 
+        services.AddAuthorization(options => {
+            options.AddPolicy("Admin",
+                policitica =>
+                {
+                    policitica.RequireRole("Admin");
+
+                });
+        });
+
         //Configuração dos cookies da aplicação 
         services.ConfigureApplicationCookie(options =>
         options.AccessDeniedPath = "/Account/Login"); //Controller Account, Action Login

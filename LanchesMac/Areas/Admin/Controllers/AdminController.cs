@@ -5,7 +5,7 @@ namespace LanchesMac.Areas.Admin.Controllers
 {
 
     [Area(nameof(Admin))]
-    [Authorize]
+    [Authorize("Admin")]
     public class AdminController : Controller
     {
         public IActionResult Index()
