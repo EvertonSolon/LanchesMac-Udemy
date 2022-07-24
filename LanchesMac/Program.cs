@@ -1,4 +1,5 @@
 using LanchesMac.Context;
+using LanchesMac.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions;
 
@@ -26,6 +27,19 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseSession();
 
+// Para referenciar a interface "ISeedUserRoleInitial", o código abaixo que irá obter  
+// o serviço da interface por uma duração limitada.
+using (var serviceScope = app.Services.CreateScope())
+{
+    var services = serviceScope.ServiceProvider;
+
+    var seedUserRoleInitial = services.GetRequiredService<ISeedUserRoleInitial>();
+
+    seedUserRoleInitial.SeedRoles();
+    seedUserRoleInitial.SeedUsers();
+
+}
+
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -33,7 +47,7 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
       name: "areas",
-      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+      pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}"
     );
 });
 
