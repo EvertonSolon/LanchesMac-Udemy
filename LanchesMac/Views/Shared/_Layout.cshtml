@@ -20,13 +20,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1 justify-content-end align-items-center">
 
-                        @await Html.PartialAsync("_LoginPartial")
-
                         @if (User.IsInRole("Admin"))
                         {
                             <a class="nav-link text-light" asp-area="Admin" asp-controller="Admin" 
                             asp-action="Index">Admin</a>
                         }
+
+                        @await Html.PartialAsync("_LoginPartial")
 
                         <form class="navbar-form navbar-right" asp-controller="Lanche" asp-action="Search" method="get">
                             <div class="form-group">
