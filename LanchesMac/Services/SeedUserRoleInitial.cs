@@ -46,7 +46,7 @@ namespace LanchesMac.Services
                 user.LockoutEnabled = false;
                 user.SecurityStamp = Guid.NewGuid().ToString();
 
-                IdentityResult result = _userManager.CreateAsync(user, "Numsey#2022").Result;
+                IdentityResult result = _userManager.CreateAsync(user, "Teste#2022").Result;
 
                 if (result.Succeeded)
                 {
@@ -65,7 +65,7 @@ namespace LanchesMac.Services
                 user.LockoutEnabled = false;
                 user.SecurityStamp = Guid.NewGuid().ToString();
 
-                IdentityResult result = _userManager.CreateAsync(user, "Numsey#2022").Result;
+                IdentityResult result = _userManager.CreateAsync(user, "Teste#2022").Result;
 
                 if (result.Succeeded)
                 {
