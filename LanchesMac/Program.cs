@@ -2,12 +2,17 @@ using LanchesMac.Context;
 using LanchesMac.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions;
+using ReflectionIT.Mvc.Paging;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddControllersWithViews();
+builder.Services.AddPaging(options => {
+    options.ViewName = "Bootstrap4";
+    options.PageParameterName = "pageindex";
+});
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 
