@@ -1,4 +1,5 @@
-﻿using LanchesMac.Models;
+﻿using LanchesMac.Areas.Admin.Servicos;
+using LanchesMac.Models;
 using LanchesMac.Repositories;
 using LanchesMac.Repositories.Interfaces;
 using LanchesMac.Services;
@@ -34,6 +35,7 @@ public static class Infrastructure
         services.AddTransient<ILancheRepository, LancheRepository>();
         services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
         services.AddTransient<IPedidoRepository, PedidoRepository>();
+        services.AddScoped<RelatorioVendasService>();
 
         //HttpContext
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

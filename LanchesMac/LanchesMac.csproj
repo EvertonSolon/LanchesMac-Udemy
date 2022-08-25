@@ -181,8 +181,4 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Servicos\" />
-  </ItemGroup>
-
 </Project>
