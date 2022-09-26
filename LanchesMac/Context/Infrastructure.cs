@@ -37,6 +37,8 @@ public static class Infrastructure
         services.AddTransient<IPedidoRepository, PedidoRepository>();
         services.AddScoped<RelatorioVendasService>();
 
+        services.Configure<ConfigurationImagens>(configuration.GetSection("ConfigurationPastaImagens"));
+
         //HttpContext
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
